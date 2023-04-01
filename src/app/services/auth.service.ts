@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+  //eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() { }
 
   getAccessToken(): string {
