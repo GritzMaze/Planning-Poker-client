@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
 import { UiModule } from '../ui/ui.module';
-import { BoardModule } from '../board/board.module';
-
+import { DragDropModule} from '@angular/cdk/drag-drop';
+import { BoardComponent } from './board.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    BoardComponent
   ],
   imports: [
     CommonModule,
     UiModule,
-    BoardModule
+    DragDropModule
+  ],
+  exports: [
+    BoardComponent
   ]
 })
-export class HomeModule { }
+export class BoardModule { }
