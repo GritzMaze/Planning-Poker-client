@@ -1,0 +1,56 @@
+//@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@use '@angular/material' as mat;
+
+@import 'colors';
+@import '@angular/material/theming';
+
+// mat-typography-level(fontSize, lineHeight, fontWeight)
+$app-typography: mat.define-typography-config(
+  $font-family: 'Inter, sans-serif',
+  $headline: mat.define-typography-level(29px, 29px, bold),
+  $body-1: mat.define-typography-level(16px, 16px, normal),
+  $button: mat.define-typography-level(16px, 16px, 500)
+);
+
+@include mat.core($app-typography);
+
+$app-color: (
+  50: white,
+  100: $color-primary-default,
+  200: $color-primary-light,
+  300: $color-primary-dark,
+  400: $color-accent-default,
+  500: $color-accent-light,
+  600: $color-accent-dark,
+  700: $color-warn-default,
+  800: $color-warn-light,
+  900: $color-warn-dark,
+  A100: white,
+  A200: white,
+  A400: white,
+  A700: white,
+  contrast:
+    (
+      50: white,
+      100: white,
+      200: white,
+      300: white,
+      400: white,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+      A100: white,
+      A200: white,
+      A400: white,
+      A700: white
+    )
+);
+
+$app-primary: mat.define-palette($app-color, 100, 200, 300);
+$app-accent: mat.define-palette($app-color, 400, 500, 600);
+$app-warn: mat.define-palette($app-color, 700, 800, 900);
+$app-theme: mat.define-light-theme($app-primary, $app-accent, $app-warn);
+
+@include mat.all-component-themes($app-theme);
