@@ -1,0 +1,42 @@
+@import 'src/colors';
+
+.tag-red {
+    color: $text-red;
+    background-color: $text-light-red;
+}
+
+.tag-green {
+    color: $text-green;
+    background-color: $text-light-green;
+}
+
+.tag-aqua {
+    color: $text-aqua;
+    background-color: $text-light-aqua;
+}
+
+.tag-purple {
+    color: $text-purple;
+    background-color: $text-light-purple;
+}
+
+.tag-grey {
+    color: $text-grey;
+    background-color: $text-light-grey;
+}
+
+.tag-white {
+    color: $text-black-grey;
+    background-color: $text-lightest-grey;
+}
+
+.tag {
+    padding: 7px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.5em;
+    margin-right: 5px;
+}

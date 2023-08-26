@@ -1,0 +1,40 @@
+@import 'src/colors';
+
+.field-wrapper {
+  display: flex;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  width:300px;
+  border:1px solid $blue;
+  border-radius: 1em;
+}
+
+.field-wrapper {
+  display: flex;
+  width: 100%;
+  padding:0 5px;
+}
+
+.field-title {
+  font-size: 14px;
+  color: $text-grey;
+  margin-bottom: 5px;
+  padding: 0 5px;
+  width: 40%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.blue {
+  color: #417991;
+}
+
+.field-value {
+  color: $color-text-black;
+  width: 40%;
+}
