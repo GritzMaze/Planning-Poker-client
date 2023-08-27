@@ -8,6 +8,7 @@ import { UiModule } from './ui/ui.module';
 import { CoreModule } from './core/core.module';
 import { ServerModule } from './server/server.module';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,14 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     ServerModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        allowedDomains: ['localhost:3000'],
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

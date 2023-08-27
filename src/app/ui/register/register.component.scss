@@ -1,0 +1,30 @@
+
+@import 'src/colors';
+
+.mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+  
+  form {
+    width: 70%;
+  }
+  
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .error {
+    padding: 16px;
+    color: white;
+    background-color: $color-error;
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }
+  

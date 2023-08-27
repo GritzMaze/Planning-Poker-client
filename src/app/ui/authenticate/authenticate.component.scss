@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    max-height: 700px;
+    min-height: 300px;
+  }
+
+  
+mat-card {
+    width: 20%;
+    min-width: 300px;
+  }
+  

@@ -30,13 +30,19 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     CardComponent,
-    TagComponent
+    TagComponent,
+    LoginComponent,
+    AuthenticateComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +75,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -104,7 +111,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ]
 })
 export class UiModule { }
