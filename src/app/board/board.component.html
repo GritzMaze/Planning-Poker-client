@@ -1,21 +1,31 @@
 <div cdkDropListGroup>
   <div class="board">
+    <ng-container *ngIf="(columns$ | async) as columns; else noData">
     <div class="board-column" *ngFor="let column of columns">
-      <div class="board-column-title">{{ column.title }}</div>
-      <div class="board-column-content">
+      <div class="board-column-content" [ngStyle]="{ 'background-color': column.color + '0C' } ">
+      <div class="board-column-title" [ngStyle]="{ 'background-color': column.color }">{{ column.name }}</div>
         <div
           cdkDropList
-          [cdkDropListData]="column.title"
+          [cdkDropListData]="column.cards"
           (cdkDropListDropped)="drop($event)"
         >
           <app-card
-            *ngFor="let item of column.tasks"
+            *ngFor="let card of column.cards"
             cdkDrag
-            class="board-item"
+            [cdkDragDisabled]="false"
+            class="board-item overlay"
+            [card]="card"
+            [color]="column.color"
           >
           </app-card>
         </div>
       </div>
     </div>
+  </ng-container>
+  <ng-template #noData>
+    <div class="no-data">
+      <div class="no-data-text">No Columns</div>
+    </div>
+  </ng-template>
   </div>
 </div>

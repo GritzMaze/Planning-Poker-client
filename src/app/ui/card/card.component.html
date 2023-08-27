@@ -1,22 +1,22 @@
-<mat-card>
+<mat-card [ngStyle]="{ 'border-color': color }">
   <mat-card-content>
     <div class="field-wrapper">
       <div class="field-title">Title</div>
-      <div class="field-value bold blue">Name</div>
+      <div class="field-value bold blue">{{ card.name }}</div>
     </div>
     <div class="field-wrapper">
       <div class="field-title">Created on</div>
-      <div class="field-value">May 27, 2019 12:06 PM</div>
+      <div class="field-value">{{ card.created }}</div>
     </div>
     <br>
     <div class="field-wrapper">
       <div class="field-title">Priority</div>
-      <div class="field-value"><app-tag color="green">Low</app-tag></div>
+      <div class="field-value"><app-tag [color]="tagColor">{{ card.priority }}</app-tag></div>
     </div>
     <br>
     <div class="field-wrapper">
       <div class="field-title">Assigned to</div>
-      <div class="field-value">Vesselin Jivkov</div>
+      <div class="field-value">{{ card.assignedTo }}</div>
     </div>
   </mat-card-content>
 </mat-card>

@@ -1,6 +1,13 @@
 import { Component, Input } from '@angular/core';
 
-export type TagColor = 'purple' | 'green' | 'yellow' | 'red' | 'white';
+
+export enum TagColor {
+  Purple,
+  Green,
+  Aqua,
+  Red,
+  White
+}
 
 @Component({
   selector: 'app-tag',
@@ -9,9 +16,9 @@ export type TagColor = 'purple' | 'green' | 'yellow' | 'red' | 'white';
 })
 export class TagComponent {
 
-  @Input() color: TagColor = 'white';
+  @Input() color: TagColor = TagColor.White;
 
   get colorCombination(): string {
-    return `tag-${this.color}`;
+    return `tag-${TagColor[this.color]}`;
   }
 }

@@ -18,25 +18,25 @@ const board: Board = {
           id: 1,
           name: 'Card 1',
           created: new Date(),
-          priority: "low",
+          priority: "Low",
           assignedTo: "John Doe"
         },
         {
           id: 2,
           name: 'Card 2',
           created: new Date(),
-          priority: "low",
+          priority: "Low",
           assignedTo: "John Doe"
         },
         {
           id: 3,
           name: 'Card 3',
           created: new Date(),
-          priority: "low",
+          priority: "High",
           assignedTo: "John Doe"
         }
       ],
-      color: '#ff0000',
+      color: '#43ADEA',
     },
     {
       id: 2,
@@ -46,25 +46,25 @@ const board: Board = {
           id: 4,
           name: 'Card 4',
           created: new Date(),
-          priority: "low",
+          priority: "Critical",
           assignedTo: "John Doe"
         },
         {
           id: 5,
           name: 'Card 5',
           created: new Date(),
-          priority: "low",
+          priority: "Medium",
           assignedTo: "John Doe"
         },
         {
           id: 6,
           name: 'Card 6',
           created: new Date(),
-          priority: "low",
+          priority: "High",
           assignedTo: "John Doe"
         }
       ],
-      color: '#00ff00',
+      color: '#36D288',
     },
     {
       id: 3,
@@ -74,25 +74,25 @@ const board: Board = {
           id: 7,
           name: 'Card 7',
           created: new Date(),
-          priority: "low",
+          priority: "Critical",
           assignedTo: "John Doe"
         },
         {
           id: 8,
           name: 'Card 8',
           created: new Date(),
-          priority: "low",
+          priority: "High",
           assignedTo: "John Doe"
         },
         {
           id: 9,
           name: 'Card 9',
           created: new Date(),
-          priority: "low",
+          priority: "Low",
           assignedTo: "John Doe"
         }
       ],
-      color: '#0000ff',
+      color: '#FFC165',
     }
   ]
 }

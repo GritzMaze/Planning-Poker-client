@@ -12,7 +12,7 @@ import { BoardComponent } from './board.component';
   imports: [
     CommonModule,
     UiModule,
-    DragDropModule
+    DragDropModule,
   ],
   exports: [
     BoardComponent
