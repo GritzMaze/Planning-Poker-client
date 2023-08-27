@@ -5,6 +5,7 @@ import { UiModule } from '../ui/ui.module';
 import { BoardModule } from '../board/board.module';
 import { NavigationModule } from '../navigation/navigation.module';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     UiModule,
     BoardModule,
     NavigationModule,
-    DashboardModule
+    DashboardModule,
+    RouterModule
   ]
 })
 export class HomeModule { }

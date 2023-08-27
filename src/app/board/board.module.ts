@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UiModule } from '../ui/ui.module';
 import { DragDropModule} from '@angular/cdk/drag-drop';
 import { BoardComponent } from './board.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { BoardComponent } from './board.component';
     CommonModule,
     UiModule,
     DragDropModule,
+    RouterModule
   ],
   exports: [
     BoardComponent

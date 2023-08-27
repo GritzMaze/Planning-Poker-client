@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { BoardService } from '../server/services/board.service';
 import { Card } from '../server/models/card';
 import { Column } from '../server/models/column';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -20,14 +21,17 @@ export class BoardComponent extends DestroyableComponent implements OnInit {
   private columnsSubject$ = new BehaviorSubject<Column[]>([]);
 
   constructor(
-    private boardService: BoardService
+    private boardService: BoardService,
+    private route: ActivatedRoute
   ) {
     super();
     this.columns$ = this.columnsSubject$.asObservable();
   }
 
   ngOnInit(): void {
-    this.preventLeak(this.boardService.getBoardById(1)).subscribe((board) => {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.preventLeak(this.boardService.getBoardById(id)).subscribe((board) => {
       console.log(board.columns);
       this.columnsSubject$.next(board.columns);
     });

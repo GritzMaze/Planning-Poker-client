@@ -29,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -68,6 +69,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
+    BrowserAnimationsModule
   ],
   exports: [
     CommonModule,
@@ -102,6 +104,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
+    BrowserAnimationsModule
   ]
 })
 export class UiModule { }
