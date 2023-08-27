@@ -1,0 +1,29 @@
+:host {
+    width: 80%;
+}
+
+.list-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.list-content span {
+    width: 25%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.actions {
+    justify-content: flex-end!important;
+}

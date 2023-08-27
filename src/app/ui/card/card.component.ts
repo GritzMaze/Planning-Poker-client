@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Card } from 'src/app/server/models/Card';
+import { Card } from 'src/app/server/models/card';
 import { TagColor } from '../tag/tag.component';
 
 @Component({

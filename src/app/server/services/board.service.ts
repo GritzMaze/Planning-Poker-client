@@ -9,6 +9,8 @@ import { Board } from '../models/board';
 const board: Board = {
   id: 1,
   name: 'Board 1',
+  owner: 'John Doe',
+  created: new Date().toDateString(),
   columns: [
     {
       id: 1,
@@ -97,6 +99,8 @@ const board: Board = {
   ]
 }
 
+const boards: Board[] = [ board, board, board];
+
 
 
 @Injectable()
@@ -113,6 +117,11 @@ export class BoardService {
   getBoardById(id: number) : Observable<Board> {
     return of(board);
     // return this.http.get<Board>(`${this.apiUrl}/board/${id}`);
+  }
+
+  getBoards(): Observable<Board[]> {
+    return of(boards);
+    // return this.http.get<Board[]>(`${this.apiUrl}/board`);
   }
 
   deleteBoardById(id: number): Observable<any> {

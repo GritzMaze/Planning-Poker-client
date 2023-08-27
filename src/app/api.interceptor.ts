@@ -7,9 +7,9 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, map, switchMap, catchError, from } from 'rxjs';
-import { MessageService } from './services/message.service';
-import { EnvironmentService } from './services/environment.service';
-import { AuthService } from './services/auth.service';
+import { MessageService } from './core/services/message.service';
+import { EnvironmentService } from './core/services/environment.service';
+import { AuthService } from './core/services/auth.service';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {

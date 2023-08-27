@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { UiModule } from '../ui/ui.module';
 import { BoardModule } from '../board/board.module';
 import { NavigationModule } from '../navigation/navigation.module';
+import { DashboardModule } from '../dashboard/dashboard.module';
 
 
 
@@ -15,7 +16,8 @@ import { NavigationModule } from '../navigation/navigation.module';
     CommonModule,
     UiModule,
     BoardModule,
-    NavigationModule
+    NavigationModule,
+    DashboardModule
   ]
 })
 export class HomeModule { }

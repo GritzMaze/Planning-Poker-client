@@ -7,8 +7,8 @@ import {
 import { DestroyableComponent } from '../ui/destroyable/destroyable.component';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BoardService } from '../server/services/board.service';
-import { Card } from '../server/models/Card';
-import { Column } from '../server/models/Column';
+import { Card } from '../server/models/card';
+import { Column } from '../server/models/column';
 
 @Component({
   selector: 'app-board',
