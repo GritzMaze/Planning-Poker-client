@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, map, switchMap, catchError, from } from 'rxjs';
+import { Observable, map, switchMap, catchError, from, of } from 'rxjs';
 import { MessageService } from './core/services/message.service';
 import { EnvironmentService } from './core/services/environment.service';
 import { AuthService } from './core/services/auth.service';
@@ -38,7 +38,7 @@ export class ApiInterceptor implements HttpInterceptor {
     let errorMessage: string;
 
     try {
-      const fault = JSON.parse(error.error);
+      const fault = error.error;
       errorMessage = fault.message;
 
       if (fault.status === 500) {
@@ -66,10 +66,10 @@ export class ApiInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return from(this.authService.getAccessToken()).pipe(
-      map((accessToken: string) => {
+    return of(this.authService.getAccessToken()).pipe(
+      map((accessToken: string | null) => {
         let headers = request.headers;
-
+        console.log(accessToken);
         if (accessToken) {
           headers = headers.append('Authorization', `Bearer ${accessToken}`);
         }
@@ -85,15 +85,16 @@ export class ApiInterceptor implements HttpInterceptor {
 
           // TODO: When we have authentication, we need to handle 401 errors
 
-          // if (error.status === 401) {
-          //   if (this.isAuthRequest(request)) {
-          //     this.authService.logout();
-          //   } else if (this.isUserRequest(request)) {
-          //     this.authService.logout();
-          //   } else {
-          //     return this.authService.refreshToken();
-          //   }
-          // }
+          if (error.status === 401) {
+            if (this.isAuthRequest(request)) {
+              this.authService.logout();
+            } else if (this.isUserRequest(request)) {
+              this.authService.logout();
+            } else {
+              this.authService.logout();
+              // return this.authService.refreshToken();
+            }
+          }
         }
         throw error;
       })

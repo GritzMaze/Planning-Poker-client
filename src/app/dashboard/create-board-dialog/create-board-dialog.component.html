@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Create Board</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formGroup">
+    <mat-form-field>
+      <input matInput placeholder="Board Name" formControlName="name" />
+    </mat-form-field>
+    <h3>Columns</h3>
+    <div
+      formArrayName="columns"
+      *ngFor="let column of numberOfColumns$ | async; let i = index"
+    >
+      <h4>Column {{ i + 1 }}</h4>
+      <app-column-row [formControlName]="i" (deleted)="removeColumn(i)"></app-column-row>
+    </div>
+    <button mat-raised-button color="primary" (click)="addColumn()">
+      Add Column
+    </button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="submit()">Submit</button>
+</div>

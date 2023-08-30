@@ -51,7 +51,7 @@
           </mat-form-field>
       </p>
   
-    <div *ngIf="errors && form.dirty" class="error">
+    <div *ngIf="errors.length && form.dirty" class="error">
         <div *ngFor="let error of errors">{{ error }}</div>
     </div>
 

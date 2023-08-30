@@ -7,8 +7,9 @@ import { HomeModule } from './home/home.module';
 import { UiModule } from './ui/ui.module';
 import { CoreModule } from './core/core.module';
 import { ServerModule } from './server/server.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ApiInterceptor } from './api.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { JwtModule } from '@auth0/angular-jwt';
       }
     })
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

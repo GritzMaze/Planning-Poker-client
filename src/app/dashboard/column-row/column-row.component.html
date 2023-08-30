@@ -1,0 +1,14 @@
+<div class="container">
+    <form [formGroup]="formGroup">
+        <mat-form-field>
+            <input matInput placeholder="Column Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input 
+            matInput
+            placeholder="Color"
+            formControlName="color">
+        </mat-form-field>
+        <mat-icon (click)="delete()" class="delete-icon" class="delete-button">delete</mat-icon>
+    </form>
+</div>

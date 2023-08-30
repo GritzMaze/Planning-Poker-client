@@ -1,35 +1,51 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { catchError, of, switchMap } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { DestroyableComponent } from '../destroyable/destroyable.component';
+import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/services/message.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
-
+export class RegisterComponent extends DestroyableComponent {
   form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     confirmPassword: new FormControl('', [Validators.required]),
     email: new FormControl(''),
-
   });
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private messageService: MessageService
+    ) {
+    super();
+  }
 
   submit() {
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+      this.preventLeak(this.authService.register(this.form.value)).pipe(
+        switchMap(() => this.authService.login({username: this.form.controls['username'].value, password: this.form.controls['password'].value})),
+      ).subscribe(() => {
+        this.router.navigate(['/']);
+      });
     }
   }
-  @Output() submitEM = new EventEmitter();
 
   get errors() {
     const errors = [];
     const controls = this.form.controls;
     for (const name in controls) {
       if (controls[name].errors) {
-        errors.push(`${name} is ${Object.keys(controls[name].errors || {}).join(', ')}`)
+        errors.push(
+          `${name} is ${Object.keys(controls[name].errors || {}).join(', ')}`
+        );
       }
     }
 

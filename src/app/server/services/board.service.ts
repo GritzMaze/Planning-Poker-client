@@ -1,106 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 import { Board } from '../models/board';
+import { EnvironmentService } from 'src/app/core/services/environment.service';
 
 
-
-const board: Board = {
-  id: 1,
-  name: 'Board 1',
-  owner: 'John Doe',
-  created: new Date().toDateString(),
-  columns: [
-    {
-      id: 1,
-      name: 'TO DO',
-      cards: [
-        {
-          id: 1,
-          name: 'Card 1',
-          created: new Date(),
-          priority: "Low",
-          assignedTo: "John Doe"
-        },
-        {
-          id: 2,
-          name: 'Card 2',
-          created: new Date(),
-          priority: "Low",
-          assignedTo: "John Doe"
-        },
-        {
-          id: 3,
-          name: 'Card 3',
-          created: new Date(),
-          priority: "High",
-          assignedTo: "John Doe"
-        }
-      ],
-      color: '#43ADEA',
-    },
-    {
-      id: 2,
-      name: 'In Progress',
-      cards: [
-        {
-          id: 4,
-          name: 'Card 4',
-          created: new Date(),
-          priority: "Critical",
-          assignedTo: "John Doe"
-        },
-        {
-          id: 5,
-          name: 'Card 5',
-          created: new Date(),
-          priority: "Medium",
-          assignedTo: "John Doe"
-        },
-        {
-          id: 6,
-          name: 'Card 6',
-          created: new Date(),
-          priority: "High",
-          assignedTo: "John Doe"
-        }
-      ],
-      color: '#36D288',
-    },
-    {
-      id: 3,
-      name: 'Done',
-      cards: [
-        {
-          id: 7,
-          name: 'Card 7',
-          created: new Date(),
-          priority: "Critical",
-          assignedTo: "John Doe"
-        },
-        {
-          id: 8,
-          name: 'Card 8',
-          created: new Date(),
-          priority: "High",
-          assignedTo: "John Doe"
-        },
-        {
-          id: 9,
-          name: 'Card 9',
-          created: new Date(),
-          priority: "Low",
-          assignedTo: "John Doe"
-        }
-      ],
-      color: '#FFC165',
-    }
-  ]
+export interface BoardsWithCount {
+  total: number;
+  boards: Board[];
 }
-
-const boards: Board[] = [ board, board, board];
-
 
 
 @Injectable()
@@ -109,22 +17,29 @@ export class BoardService {
   private apiUrl: string;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    environmentService: EnvironmentService
   ) { 
-    this.apiUrl = environment.apiUrl;
+    this.apiUrl = environmentService.apiUrl;
   }
 
   getBoardById(id: number) : Observable<Board> {
-    return of(board);
-    // return this.http.get<Board>(`${this.apiUrl}/board/${id}`);
+    return this.http.get<Board>(`${this.apiUrl}/boards/${id}`);
   }
 
-  getBoards(): Observable<Board[]> {
-    return of(boards);
-    // return this.http.get<Board[]>(`${this.apiUrl}/board`);
+  getBoards(filter?: string, offset?: number, limit?: number): Observable<BoardsWithCount> {
+    filter = filter || '';
+    offset = offset || 0;
+    limit = limit || 10;
+    const query = `?filter=${filter}&offset=${offset}&limit=${limit}`
+    return this.http.get<BoardsWithCount>(`${this.apiUrl}/boards/${query}`);
+  }
+
+  createBoard(board: Board): Observable<Board> {
+    return this.http.post<Board>(`${this.apiUrl}/boards`, board);
   }
 
   deleteBoardById(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/board/${id}`);
+    return this.http.delete(`${this.apiUrl}/boards/${id}`);
   }
 }
