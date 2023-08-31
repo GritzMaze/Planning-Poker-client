@@ -20,7 +20,6 @@ export class UserService {
 
   login(user: any): Observable<string> {
     return this.http.post<Token>(`${this.apiUrl}/login`, user).pipe(
-      tap((token: Token) => console.log(token)),
       map((token: Token) => token.token)
     );
   }
@@ -37,6 +36,14 @@ export class UserService {
     return this.http.post<Token>(`${this.apiUrl}/refresh-token`, {}).pipe(
       map((token: Token) => token.token)
     );
+  }
+
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
 }

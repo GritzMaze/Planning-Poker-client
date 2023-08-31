@@ -4,11 +4,13 @@ import { UiModule } from '../ui/ui.module';
 import { DragDropModule} from '@angular/cdk/drag-drop';
 import { BoardComponent } from './board.component';
 import { RouterModule } from '@angular/router';
+import { CardComponent } from './card/card/card.component';
 
 
 @NgModule({
   declarations: [
-    BoardComponent
+    BoardComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,

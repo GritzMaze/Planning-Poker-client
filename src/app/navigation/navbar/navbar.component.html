@@ -1,13 +1,17 @@
 <mat-toolbar>
-    <button mat-icon-button class="example-icon">
-     <mat-icon>menu</mat-icon>
-   </button>
-   <span>Scrum Manager</span>
-   <span class="example-spacer"></span>
-   <button mat-icon-button class="example-icon favorite-icon">
-     <mat-icon>favorite</mat-icon>
-   </button>
-   <button mat-icon-button class="example-icon">
-    <mat-icon>share</mat-icon>
+  <h2>Scrum Manager</h2>
+  <div class="nav-menu">
+    <a mat-button routerLink="/dashboard"><mat-icon>home</mat-icon>Dashboard</a>
+  </div>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    [matMenuTriggerFor]="profile"
+  >
+    <mat-icon>account_circle</mat-icon>
   </button>
- </mat-toolbar>
+  <mat-menu #profile="matMenu">
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+</mat-toolbar>

@@ -6,7 +6,7 @@
     </div>
     <div class="field-wrapper">
       <div class="field-title">Created on</div>
-      <div class="field-value">{{ card.created }}</div>
+      <div class="field-value">{{ card.createdAt }}</div>
     </div>
     <br>
     <div class="field-wrapper">
@@ -16,7 +16,7 @@
     <br>
     <div class="field-wrapper">
       <div class="field-title">Assigned to</div>
-      <div class="field-value">{{ card.assignedTo }}</div>
+      <div class="field-value">{{ card.assignedTo?.name }}</div>
     </div>
   </mat-card-content>
 </mat-card>

@@ -24,7 +24,6 @@ export class AuthService {
   constructor(private jwtHelperService: JwtHelperService, private userService: UserService) { }
 
   getAccessToken(): string | null {
-    console.log(localStorage.getItem('token'))
     return localStorage.getItem('token');
   }
 
@@ -65,6 +64,17 @@ export class AuthService {
     return this.userService.refreshToken().pipe(
       tap(token => this.setToken(token))
     );
+  }
+
+  getUserId(): number | null {
+    const token = this.getAccessToken();
+    if (!token) {
+      return null;
+    }
+
+    const { id } = this.jwtHelperService.decodeToken(token);
+
+    return id;
   }
 
 }

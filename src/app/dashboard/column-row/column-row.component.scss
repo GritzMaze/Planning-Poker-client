@@ -1,5 +1,9 @@
 @import 'src/colors';
 
+:host {
+    margin: 0 10px;
+}
+
 .container {
     display: flex;
     justify-content: center;

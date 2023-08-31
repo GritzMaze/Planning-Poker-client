@@ -1,0 +1,50 @@
+<form [formGroup]="formGroup">
+    <h1 align="center">Create/Edit card</h1>
+    <mat-form-field>
+        <input matInput placeholder="Card Name" formControlName="name">
+        <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+            Card name is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Card Description" formControlName="description"></textarea>
+        <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
+            Card description is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Column</mat-label>
+        <mat-select formControlName="column">
+            <mat-option *ngFor="let column of (board$ | async)?.columns" [value]="column.id">
+                {{ column.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Assignee</mat-label>
+        <mat-select formControlName="assignedTo">
+            <mat-option *ngFor="let user of (users$ | async)" [value]="user.id">
+                {{ user.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+            <mat-option *ngFor="let priority of priorities" [value]="priority">
+                {{ priority }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="action-buttons">
+        <button mat-raised-button [routerLink]="['/board', (board$ | async)?.id ]">Back to Board</button>
+        <button mat-raised-button cdkFocusInitial [disabled]="!formGroup.valid" (click)="submit()" color="primary">Submit</button>
+    </div>
+</form>

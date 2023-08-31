@@ -1,8 +1,14 @@
+import { User } from './user';
+
 export class Card {
     id: number;
     name: string;
-    created: Date;
+    description: string;
+    createdAt: string;
     priority: string;
-    assignedTo: string;
+    assignedTo?: User;
+    assignedToId?: number;
+    columnId: number;
+    boardId: number;
 
 }

@@ -1,31 +1,55 @@
 <div cdkDropListGroup>
   <div class="board">
-    <ng-container *ngIf="(columns$ | async) as columns; else noData">
-    <div class="board-column" *ngFor="let column of columns">
-      <div class="board-column-content" [ngStyle]="{ 'background-color': column.color + '0C' } ">
-      <div class="board-column-title" [ngStyle]="{ 'background-color': column.color }">{{ column.name }}</div>
+    <ng-container *ngIf="columns$ | async as columns; else noData">
+      <div class="board-column" *ngFor="let column of columns">
         <div
-          cdkDropList
-          [cdkDropListData]="column.cards"
-          (cdkDropListDropped)="drop($event)"
+          class="board-column-content"
+          [ngStyle]="{ 'background-color': column.color + '0C' }"
         >
-          <app-card
-            *ngFor="let card of column.cards"
-            cdkDrag
-            [cdkDragDisabled]="false"
-            class="board-item overlay"
-            [card]="card"
-            [color]="column.color"
+          <div
+            class="board-column-title"
+            [ngStyle]="{ 'background-color': column.color }"
           >
-          </app-card>
+            {{ column.name }}
+          </div>
+          <a
+            [routerLink]="['/card']"
+            [queryParams]="{ columnId: column.id }"
+            class="add-card"
+          >
+            <mat-icon>add</mat-icon> New item
+          </a>
+          <div
+            cdkDropList
+            id="{{column.id}}"
+            [cdkDropListData]="column.cards"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div *ngIf="column?.cards?.length !== 0; else noCards">
+              <app-card
+                *ngFor="let card of column.cards"
+                cdkDrag
+                [cdkDragDisabled]="loading$ | async"
+                class="board-item overlay"
+                [card]="card"
+                [color]="column.color"
+                [routerLink]="['/card', card.id]"
+              >
+              </app-card>
+            </div>
+          </div>
+          <ng-template #noCards>
+            <div class="no-data">
+              <div class="no-data-text">No Cards</div>
+            </div>
+          </ng-template>
         </div>
       </div>
-    </div>
-  </ng-container>
-  <ng-template #noData>
-    <div class="no-data">
-      <div class="no-data-text">No Columns</div>
-    </div>
-  </ng-template>
+    </ng-container>
+    <ng-template #noData>
+      <div class="no-data">
+        <div class="no-data-text">No Columns</div>
+      </div>
+    </ng-template>
   </div>
 </div>

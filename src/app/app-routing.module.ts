@@ -6,6 +6,7 @@ import { BoardComponent } from './board/board.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './core/services/authguard.service';
 import { AuthenticateComponent } from './ui/authenticate/authenticate.component';
+import { CardComponent } from './board/card/card/card.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,15 @@ const routes: Routes = [
         path: 'board/:id',
         component: BoardComponent,
       },
+      {
+        path: 'card/:id',
+        component: CardComponent
+      },
+      {
+        path: 'card',
+        pathMatch: 'full',
+        redirectTo: 'card/',
+      }
     ],
   },
   {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UiModule } from '../ui/ui.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +12,8 @@ import { UiModule } from '../ui/ui.module';
   ],
   imports: [
     CommonModule,
-    UiModule
+    UiModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent

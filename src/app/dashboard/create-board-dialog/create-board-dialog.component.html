@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Create Board</h1>
+<h1 mat-dialog-title>Create/Edit Board</h1>
 <div mat-dialog-content>
   <form [formGroup]="formGroup">
     <mat-form-field>
@@ -17,7 +17,7 @@
     </button>
   </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="close()">Cancel</button>
-  <button mat-button cdkFocusInitial (click)="submit()">Submit</button>
+<div mat-dialog-actions class="action-buttons">
+  <button mat-raised-button (click)="close()">Cancel</button>
+  <button mat-raised-button cdkFocusInitial [disabled]="!formGroup.valid" (click)="submit()">Submit</button>
 </div>

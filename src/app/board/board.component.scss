@@ -3,6 +3,8 @@
 .board-column {
   display: flex;
   flex-direction: column;
+  min-width:300px;
+  min-height: 300px;
 }
 
 .board {
@@ -47,11 +49,9 @@
 
   .board-column-title {
     text-align: center;
-    margin-bottom: 10px;
-    background-color: $blue;
     color: white;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     font-size: 1.5em;
     font-weight: 700;
   }
@@ -61,4 +61,31 @@
     background-color: rgb(255, 255, 255, 0.05);
     color: white;
     margin: 0 10px;
+  }
+
+  .no-data {
+    text-align: center;
+    color: $text-grey;
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+
+  .add-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    cursor: pointer;
+    background-color: $text-darker-light-grey;
+    text-decoration: none;
+
+  }
+
+  .add-card:hover {
+    background-color: darken($text-darker-light-grey, 10%);
+  }
+
+  .add-card mat-icon {
+    background-color: $color-success;
+    margin-right: 5px;
   }

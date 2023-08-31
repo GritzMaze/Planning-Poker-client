@@ -69,7 +69,6 @@ export class ApiInterceptor implements HttpInterceptor {
     return of(this.authService.getAccessToken()).pipe(
       map((accessToken: string | null) => {
         let headers = request.headers;
-        console.log(accessToken);
         if (accessToken) {
           headers = headers.append('Authorization', `Bearer ${accessToken}`);
         }
